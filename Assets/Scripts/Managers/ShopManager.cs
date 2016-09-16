@@ -79,18 +79,18 @@ public class ShopManager : MonoBehaviour
                     {
                         DeductGem(refilGem);
                         lifeTimer.ResetLife();
-                        DisplayResultMessage(true, "Life has been refilled!");
+                        DisplayResultMessage(true, "Energy has been refilled!");
                     }
                     else
                     {
                         //Display Error (Insufficient GEM)
-                        DisplayResultMessage(false, "Insufficient GEM!");
+                        DisplayResultMessage(false, "Insufficient Gems!");
                     }
                 }
                 else
                 {
                     //Display Error (Game hasn't started)
-                    DisplayResultMessage(false, "You have full lifes!");
+                    DisplayResultMessage(false, "Energy is full!");
                 }
                 break;
             case 1: //Refil Posivity
@@ -103,18 +103,18 @@ public class ShopManager : MonoBehaviour
                             DeductGem(refilMood);
                             GameManager.lvlPositivity = GameManager.maxBar;
                             GameManager.UpdateNegativeBar();
-                            DisplayResultMessage(true, "Posivity Bar has been refilled!");
+                            DisplayResultMessage(true, "Mood Bar has been refilled!");
                         }
                         else
                         {
                             //Display Error (Bar is Full)
-                            DisplayResultMessage(false, "Posivity Bar is Full!");
+                            DisplayResultMessage(false, "Mood Bar is Full!");
                         }
                     }
                     else
                     {
                         //Display Error (Insufficient GEM)
-                        DisplayResultMessage(false, "Insufficient GEM!");
+                        DisplayResultMessage(false, "Insufficient Gems!");
                     }
                 }
                 else
@@ -133,18 +133,18 @@ public class ShopManager : MonoBehaviour
                             DeductGem(refilHygiene);
                             GameManager.lvlCleanliness = GameManager.maxBar;
                             GameManager.UpdateMessinessBar();
-                            DisplayResultMessage(true, "Cleanliness Bar has been refilled!");
+                            DisplayResultMessage(true, "Hygiene Bar has been refilled!");
                         }
                         else
                         {
                             //Display Error (Bar is Full)
-                            DisplayResultMessage(false, "Cleanliness Bar is Full!");
+                            DisplayResultMessage(false, "Hygiene Bar is Full!");
                         }
                     }
                     else
                     {
                         //Display Error (Insufficient GEM)
-                        DisplayResultMessage(false, "Insufficient GEM!");
+                        DisplayResultMessage(false, "Insufficient Gems!");
                     }
                 }
                 else
@@ -163,18 +163,18 @@ public class ShopManager : MonoBehaviour
                             DeductGem(refilVitality);
                             GameManager.lvlStamina = GameManager.maxStamina;
                             GameManager.UpdateStaminaBar();
-                            DisplayResultMessage(true, "Stamina has been refilled!");
+                            DisplayResultMessage(true, "Vitality has been refilled!");
                         }
                         else
                         {
                             //Display Error (Bar is Full)
-                            DisplayResultMessage(false, "Stamina is Full!");
+                            DisplayResultMessage(false, "Vitality is Full!");
                         }
                     }
                     else
                     {
                         //Display Error (Insufficient GEM)
-                        DisplayResultMessage(false, "Insufficient GEM!");
+                        DisplayResultMessage(false, "Insufficient Gems!");
                     }
                 }
                 else

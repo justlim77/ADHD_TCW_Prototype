@@ -32,7 +32,7 @@ public class GamePanelSequence : MonoBehaviour
     public GameObject btnPause;
 
     RectTransform m_TextPanelRect;
-    //RectTransform m_gameClearRect;
+    RectTransform m_gameClearRect;
     TextSequence m_TextSequence;
     TextSequence m_gameSequence;
     CurrencySequence m_CurrencySequence;
@@ -41,7 +41,7 @@ public class GamePanelSequence : MonoBehaviour
     void Awake ()
     {
         m_TextPanelRect = textPanel.GetComponent<RectTransform>();
-        //m_gameClearRect = gameClearPanel.GetComponent<RectTransform>();
+        m_gameClearRect = gameClearPanel.GetComponent<RectTransform>();
         m_TextSequence = textPanel.GetComponent<TextSequence>();
         m_gameSequence = gameClearPanel.GetComponent<TextSequence>();
         m_CurrencySequence = currencyPanel.GetComponent<CurrencySequence>();
