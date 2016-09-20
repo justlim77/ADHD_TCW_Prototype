@@ -296,4 +296,10 @@ public class Scenario : MonoBehaviour
                 break;
         }
     }
+
+    public void RestoreBoxCollider()
+    {
+        if (!GameManager.isBagDone)
+            bcObj.enabled = true;
+    }
 }

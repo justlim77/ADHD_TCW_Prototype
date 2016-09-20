@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class GamePanelSequence : MonoBehaviour
 {
+    public static GamePanelSequence Instance { get; private set; }
+
     public GameObject[] gameplayElements;
 
     public BoxCollider2D gotoShelf;
@@ -40,6 +42,9 @@ public class GamePanelSequence : MonoBehaviour
 
     void Awake ()
     {
+        if (Instance == null)
+            Instance = this;
+
         m_TextPanelRect = textPanel.GetComponent<RectTransform>();
         m_gameClearRect = gameClearPanel.GetComponent<RectTransform>();
         m_TextSequence = textPanel.GetComponent<TextSequence>();
@@ -113,6 +118,11 @@ public class GamePanelSequence : MonoBehaviour
 
     IEnumerator RunEndSequence()
     {
+        // Disable gameplay colliders
+        gotoBag.enabled = false;
+        gotoShelf.enabled = false;
+        gotoSleep.enabled = false;
+
         //Initialize
         for (int i = 0; i < headerText.Length; i++)
             headerText[i].GetComponent<BarSlide>().Initialize();
@@ -223,6 +233,11 @@ public class GamePanelSequence : MonoBehaviour
 
     IEnumerator RunStartSequence()
     {
+        // Disable all colliders
+        gotoBag.enabled = false;
+        gotoShelf.enabled = false;
+        gotoSleep.enabled = false;
+
         // Show day number and time arrived at home
         textPanel.gameObject.SetActive(true);
 
@@ -274,9 +289,12 @@ public class GamePanelSequence : MonoBehaviour
         tirednessBar.SlideInBar();
         yield return m_WaitSlideDelay;
 
+        // Re-enable all colliders
         gotoSleep.enabled = true;
         gotoShelf.enabled = true;
         gotoBag.enabled = true;
+
+        // Start animation
         gotoSleep.GetComponent<ShakingAnimation>().StartAnimation();
         gotoShelf.GetComponent<ShakingAnimation>().StartAnimation();
         gotoBag.GetComponent<ShakingAnimation>().StartAnimation();
@@ -286,5 +304,10 @@ public class GamePanelSequence : MonoBehaviour
 
         btnSettings.SetActive(true);
         btnPause.SetActive(true);
+    }
+
+    public void ToggleGameplayElements(bool value)
+    {
+        gotoShelf.enabled = gotoBag.enabled = value;
     }
 }

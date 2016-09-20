@@ -18,7 +18,8 @@ public class DustInitialize : MonoBehaviour
     Vector2 min, max;
     Transform dirt;
     SpriteRenderer sr;
-    int dustSpawn;
+
+    static int dustSpawn;
 
     void Awake ()
     {
@@ -31,7 +32,7 @@ public class DustInitialize : MonoBehaviour
         if (!GameManager.isCleanShelfDone)
         {
             isLoadDone = false;
-            Debug.Log("Loading Dust");
+            //Debug.Log("Loading Dust");
 
             sr = GetComponent<SpriteRenderer>();
             min = sr.bounds.min;
@@ -56,7 +57,10 @@ public class DustInitialize : MonoBehaviour
 
     public static void DirtNumber()
     {
-        if(dirtParent.childCount <= 1)
+        dustSpawn--;
+
+        //if(dirtParent.childCount <= 1)
+        if (dustSpawn <= 0)
         {
             GameManager.SetInteractable(false);
             GameManager.isCleanShelfDone = true;

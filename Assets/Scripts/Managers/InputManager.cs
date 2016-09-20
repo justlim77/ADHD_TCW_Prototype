@@ -16,6 +16,10 @@ public class InputManager : Singleton<InputManager> {
     // Set to protected to prevent calling constructor
     protected InputManager() { }
 
+    public KeyCode restartGameKey = KeyCode.R;
+    public KeyCode resetUnitsKey = KeyCode.Delete;
+    public KeyCode resetAchievementsKey = KeyCode.End;
+
     public Fade fade;
 
     Scene m_CurrentScene;
@@ -27,9 +31,19 @@ public class InputManager : Singleton<InputManager> {
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(restartGameKey))
         {
             Restart();
+        }
+
+        if (Input.GetKeyUp(resetUnitsKey))
+        {
+            DataManager.ResetUnits();
+        }
+
+        if (Input.GetKeyUp(resetAchievementsKey))
+        {
+            AchievementManager.Instance.Reset();
         }
     }
 
@@ -50,5 +64,10 @@ public class InputManager : Singleton<InputManager> {
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ResetUnits()
+    {
+        DataManager.ResetUnits();
     }
 }

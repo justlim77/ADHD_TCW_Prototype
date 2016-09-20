@@ -32,6 +32,9 @@ public class ShelfCleaning : MonoBehaviour
 
     IEnumerator ShowShelf()
     {
+        SetBoxCollider(false);
+        Bed.Instance.SetBoxCollider(false);
+    
         bgShelf.gameObject.SetActive(true);
         goShelf.gameObject.SetActive(true);
 
@@ -58,11 +61,14 @@ public class ShelfCleaning : MonoBehaviour
 
         bgShelf.gameObject.SetActive(false);
         goShelf.gameObject.SetActive(false);
+
+        Bed.Instance.SetBoxCollider(true);
     }
 
     public void SetBoxCollider(bool isActive)
     {
-        bcShelf.enabled = isActive;
+        if (!GameManager.isTempPause)
+            bcShelf.enabled = isActive;
     }
 
     public void RestoreBoxCollider()

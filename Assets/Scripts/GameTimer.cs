@@ -37,7 +37,7 @@ public class GameTimer : MonoBehaviour
 
     public void Initialize()
     {
-        gameLife.text = lifeCount.ToString() + "/3";
+        gameLife.text = string.Format("{0}/3", lifeCount);
 
         if (lifeCount == 3)
         {
@@ -46,8 +46,6 @@ public class GameTimer : MonoBehaviour
         }
         else
             gameTimer.gameObject.SetActive(true);
-
-        Debug.Log("INITIALIZED!");
     }
 
     public void DeductLife()

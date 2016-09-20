@@ -4,7 +4,14 @@ using UnityEngine.UI;
 
 public class AchievementManager : MonoBehaviour
 {
+    public static AchievementManager Instance { get; private set; }
     public Text[] acText;
+
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     public void Initialize()
     {
@@ -22,5 +29,13 @@ public class AchievementManager : MonoBehaviour
             acText[2].text = "Status: Completed";
         else
             acText[2].text = "Status: Not Achieved";
+    }
+
+    public void Reset()
+    {
+        DataManager.StoreIntData(DataManager.acOne, 0);
+        DataManager.StoreIntData(DataManager.acTwo, 0);
+        DataManager.StoreIntData(DataManager.acThree, 0);
+        Initialize();
     }
 }

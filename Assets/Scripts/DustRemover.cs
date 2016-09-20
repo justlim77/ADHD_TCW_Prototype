@@ -3,27 +3,34 @@ using System.Collections;
 
 public class DustRemover : MonoBehaviour
 {
-    public float slideDelay = 0.1f;
+    public float fadeDelay = 0.1f;
 
     SpriteRenderer sr;
-    WaitForSeconds m_WaitSlideDelay;
+    WaitForSeconds m_waitforseconds;
+
+    bool m_interacted = false;
 
     void OnMouseEnter ()
     {
-        Destroy(gameObject);
-        DustInitialize.DirtNumber();
+        if (!m_interacted)
+        {
+            Debug.Log("Mouse enter dust");
+            m_interacted = true;
+            DustInitialize.DirtNumber();
+            Destroy(gameObject);
+        }
     }
 
     void Start ()
     {
         sr = GetComponent<SpriteRenderer>();
-        m_WaitSlideDelay = new WaitForSeconds(slideDelay);
-        StartCoroutine(ShowShelf());
+        m_waitforseconds = new WaitForSeconds(fadeDelay);
+        StartCoroutine(FadeDust());
     }
 
-    IEnumerator ShowShelf()
+    IEnumerator FadeDust()
     {
-        yield return m_WaitSlideDelay;
+        yield return m_waitforseconds;
 
         for (float i = 0; i < 1; i += Time.deltaTime)
         {

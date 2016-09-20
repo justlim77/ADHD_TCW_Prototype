@@ -9,7 +9,7 @@ public class MoveUpDown : MonoBehaviour
     void Start()
     {
         originalPos = transform.position;
-        Debug.Log("XX");
+        //Debug.Log("XX");
     }
 
     public void MoveMe(bool isReturn)

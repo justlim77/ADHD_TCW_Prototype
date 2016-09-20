@@ -26,4 +26,10 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(data, value);
     }
+
+    public static void ResetUnits()
+    {
+        PlayerPrefs.SetInt("GEM", 500);
+        PlayerPrefs.SetInt("LIFE", 3);
+    }
 }
